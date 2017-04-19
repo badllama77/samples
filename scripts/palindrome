@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+
+<?php 
+// palindrome kayak
+// palindrome "I prefer PI"
+// palindrome "I, man, am regal; a German am I." 
+if (!isset($argv[1])) {
+    echo <<<EOF
+Usage:  palindrome <string>
+    palindrome kayak
+    palindrome "I, man, am regal; a German am I.
+
+EOF;
+    exit(1);
+}
+
+ 
+echo (pali($argv[1])?'yes it is a palindrome':'sorry no emordnilap...err I mean palindrome'), "\n\n";
+
+function pali ($val)
+{
+    $val = preg_replace('/[^A-Za-z0-9]/', '', strtolower($val));
+    for ($i=1; $i<(strlen($val)/2); $i++) {
+        if ($val[$i - 1] != $val[strlen($val) - $i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
