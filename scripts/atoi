@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+
+<?php
+
+// atoi "12345 a number"
+// atoi -34345
+
+if (!isset($argv[1])) {
+    echo <<<EOF
+Usage:  atoi <string>
+    atoi "12345 a number"
+    atoi -34345
+EOF;
+    exit(1);
+}
+
+echo atoi($argv[1]), "\n\n";
+
+ 
+function atoi($str)
+{
+    $i=0;
+    $res = 0;
+    $negative = false;
+    $str = ltrim($str, " +");
+    $negative = preg_match('/^[-]/', $str) && ++$i;
+
+    for (; $i <strlen($str); ++$i) {
+        if (!is_numeric($str[$i])) {
+            break;
+        }
+
+        $res=($res<<3) + ($res<<1) + $str[$i];
+    }
+
+    if ($negative) {
+        $res = -$res;
+    }
+
+    return $res;
+}
+
+/** 
+ * now that said a much simpler implementation would be to rely on 
+ * the built in integer to string conversion
+ *function atoi() 
+ *{
+ *  return (string)$integer;
+ *}
+*/
