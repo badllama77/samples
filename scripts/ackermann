@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+
+if (!isset($argv[1]) && !isset($argv[2])) {
+    echo <<<EOF
+Usage:  ackermann <integer> <integer>
+    ackermann 4 1
+    ackermann 3 15
+EOF;
+    exit(1);
+}
+
+echo ackermann($argv[1], $argv[2]),"\n";
+
+function ackermann($x, $y)
+{
+    if ( $x==0 ) {
+        return $y + 1;
+    }
+    elseif ( $y==0 ) {
+        return ackermann( $x-1 , 1 );
+    }
+
+    return ackermann( $x-1, ackermann( $x , $y-1 ) );  
+}
+
