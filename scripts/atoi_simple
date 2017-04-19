@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+
+<?php
+
+// atoi "12345 a number"
+// atoi -34345
+
+if (!isset($argv[1])) {
+    echo <<<EOF
+Usage:  atoi <string>
+    atoi "12345 a number"
+    atoi -34345
+EOF;
+    exit(1);
+}
+
+echo atoi($argv[1]), "\n\n";
+
+/** 
+ * now that said a much simpler implementation would be to rely on 
+ * the built in integer to string conversion
+*/
+ function atoi() 
+ {
+   return (string)$integer;
+ }
