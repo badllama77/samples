@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+use Test\Console\Command\RomanCommand;
+use Test\Console\Command\AtoiCommand;
+use Test\Console\Command\PalindromeCommand;
+use Test\Console\Command\AckermannCommand;
+use Symfony\Component\Console\Application;
+
+require __DIR__.'/../vendor/autoload.php';
+
+
+$application = new Application();
+$application->add(new RomanCommand());
+$application->add(new AtoiCommand());
+$application->add(new PalindromeCommand());
+$application->add(new AckermannCommand());
+$application->run();
